@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-const Budget = (props) => {
-    const { budget, remaining,maxBudget } = useContext(AppContext);
+const Budget = () => {
+    const { budget, dispatch, maxBudget,expenses } = useContext(AppContext);
     const budgetval = Number(budget);
     
    
@@ -11,15 +11,22 @@ const Budget = (props) => {
             //setBudget("");
             return;
         }
-        const spentSoFar = budget - remaining;
-        if(budgetval < spentSoFar) {
+        const totalExpenses = expenses.reduce((total, item) => {
+            return (total = total + item.cost);
+        }, 0);
+    
+        if(budgetval < totalExpenses) {
             alert("You cannot reduce the budget value lower than the spending");
             //setBudget("");
             return;
         }
+        dispatch({
+            type: 'ADD_BUDGET',
+            payload: budgetval,
+        });
     }    
     return (
-        <div className='alert alert-secondary' style={{'white-space': 'nowrap'}}>
+        <div className='alert alert-secondary' style={{'whiteSpace': 'nowrap'}}>
             <span id="budgetval">Budget: £ 
                 <input
                         required='required'

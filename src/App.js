@@ -7,6 +7,7 @@ import Budget from './components/Budget';
 import Remaining from './components/Remaining';
 import ExpenseTotal from './components/ExpenseTotal';
 import AllocationForm from './components/AllocationForm';
+import Currency from './components/Currency';
 
 // Add code to import the other components here under
 
@@ -17,7 +18,13 @@ const App = () => {
     return (
         <AppProvider>
             <div className='container'>
+                <div className="d-inline-block" id = "heading" style={{width:'100%'}}>
                 <h1 className='mt-3'>Company's Budget Allocation</h1>
+                    <span style={{float:'right'}}  className="d-inline-block">
+                        <Currency />
+                    </span>
+                </div>
+
                     <div className='row mt-3'>
                         {/* Add Budget component here under */}        
                      
