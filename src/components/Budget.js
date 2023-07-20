@@ -1,36 +1,35 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 const Budget = (props) => {
-    const { budget, remaining, totalExpenses  } = useContext(AppContext);
+    const { budget, remaining,maxBudget } = useContext(AppContext);
     const budgetval = Number(budget);
-    const maxBudget = 20000
-   // const [setBudgetval] = useState('');
-
+    
+   
      const setBudgetval = (budgetval) => {
-console.log(totalExpenses);
        if(budgetval >= maxBudget) {
             alert("The value cannot exceed max budget  £"+maxBudget);
             //setBudget("");
             return;
         }
-        if(budgetval < totalExpenses) {
-            alert("The value cannot be lower than the spending");
+        const spentSoFar = budget - remaining;
+        if(budgetval < spentSoFar) {
+            alert("You cannot reduce the budget value lower than the spending");
             //setBudget("");
             return;
         }
     }    
     return (
-        <div className='alert alert-secondary'>
-            <span>Budget: £{budget}
-            <input
+        <div className='alert alert-secondary' style={{'white-space': 'nowrap'}}>
+            <span id="budgetval">Budget: £ 
+                <input
                         required='required'
                         type='number'
                         id='budgetval'
                         defaultValue= {budgetval}
-                        style={{ marginLeft: '2rem' , size: 10}}
+                        style={{size: 6}}
                         step='10'
-                        onChange={(event) => setBudgetval(event.target.value)}>
-            </input>
+                        onBlur={(event) => setBudgetval(event.target.value)}>
+                </input>
 
             
             
