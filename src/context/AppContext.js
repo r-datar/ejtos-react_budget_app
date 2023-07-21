@@ -87,7 +87,16 @@ const initialState = {
         { id: "IT", name: 'IT', cost: 500 },
     ],
     currency: '£'
-};
+   };
+
+   const  currencyList =[
+    {symbol :'$' , name: 'Dollar'},
+    {symbol :'£' ,  name:  'Pound'},
+    {symbol :'€'  , name:  'Euro'},
+    {symbol :'₹'  , name:  'Rupee'}
+
+];
+
 
 // 2. Creates the context this is the thing our components import and use to get the state
 export const AppContext = createContext();
@@ -114,7 +123,8 @@ export const AppProvider = (props) => {
                 remaining: remaining,
                 dispatch,
                 currency: state.currency,
-                maxBudget:20000
+                maxBudget:20000,
+                currencyList
             }}
         >
             {props.children}

@@ -3,10 +3,9 @@ import { AppContext } from '../context/AppContext';
 
 const Currency = () => {
     
-    const { dispatch, currency } = useContext(AppContext);
+    const { dispatch, currency,currencyList } = useContext(AppContext);
     
      const setCurrency = (currencyVal) => {
-       
         dispatch({
             type: 'CHG_CURRENCY',
             payload: currencyVal,
@@ -18,15 +17,14 @@ const Currency = () => {
                 <select
                         id='currencyVal'
                         name='currencyVal'
-                        onChange={(event) => setCurrency(event.target.value)}>
-                <option value="$">$ Dollar</option>
-                <option value="£">£ Pound</option>
-                <option value="€">€ Euro</option>
-                <option value="₹">₹ Rupee</option>
+                        onChange={(event) => setCurrency(event.target.value)} defaultValue={currency}>
+
+                {currencyList.map((curr) => (
+                    <option value={curr.symbol} key={curr.name} >
+                        {curr.symbol} {curr.name}
+                    </option>))}            
                 </select>
 
-            
-            
             </span>
         </div>
     );
