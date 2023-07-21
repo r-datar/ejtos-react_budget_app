@@ -18,13 +18,8 @@ const App = () => {
     return (
         <AppProvider>
             <div className='container'>
-                <div className="d-inline-block" id = "heading" style={{width:'100%'}}>
+               
                 <h1 className='mt-3'>Company's Budget Allocation</h1>
-                    <span style={{float:'right'}}  className="d-inline-block">
-                        <Currency />
-                    </span>
-                </div>
-
                     <div className='row mt-3'>
                         {/* Add Budget component here under */}        
                      
@@ -35,10 +30,15 @@ const App = () => {
                     <div className='col-sm'>
                         <Remaining />
                     </div>
+                              
                         {/* Add ExpenseTotal component here under */}        
                     <div className='col-sm'>
                         <ExpenseTotal />
-                    </div>   
+                    </div>
+                    <div style={{float:'right'}}  className="col-sm d-inline-block">
+                        <Currency />
+                    </div>
+                  
                     <h2 className='mt-3'>Allocation</h2>
                         {/* Add ExpenseList component here under */}         
                     <div className='col-sm'>

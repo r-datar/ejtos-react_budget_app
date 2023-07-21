@@ -12,7 +12,7 @@ const Currency = () => {
         });
     }    
     return (
-        <div className='alert alert-secondary' style={{'whiteSpace': 'nowrap'}}>
+        <div className='custom-select alert alert-success'>
             <span id="currency">Currency:
                 <select
                         id='currencyVal'
