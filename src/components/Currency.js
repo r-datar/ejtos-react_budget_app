@@ -20,7 +20,7 @@ const Currency = () => {
                         onChange={(event) => setCurrency(event.target.value)} defaultValue={currency}>
 
                 {currencyList.map((curr) => (
-                    <option value={curr.symbol} key={curr.name} >
+                    <option className="alert alert-success" value={curr.symbol} key={curr.name} >
                         {curr.symbol} {curr.name}
                     </option>))}            
                 </select>
